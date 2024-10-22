@@ -19,7 +19,7 @@ jobs:
         uses: synopsys-sig/synopsys-action@v1.13.0
         with:
           ### SCANNING: Required fields
-          polaris_server_url: "https://cdev.altair.synopsys.com"
+          polaris_server_url: "https://cdev.altair.synopsys.com/api/portfolio/portfolios"
           polaris_access_token: ${{ secrets.POLARIS_TOKEN_CRUDU }}
           polaris_assessment_types: "SAST"
           
