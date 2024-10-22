@@ -10,18 +10,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  curl:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: curl
-      uses: enflo/curl-action@master
-      with:
-        curl:   curl --location --request GET "https://cdev.altair.synopsys.com/api/portfolio/portfolios" \
-        --header 'Accept: application/vnd.synopsys.pm.portfolio-1+json' \
-        --header 'Api-token: {secrets.POLARIS_ACCESS_TOKEN}'
-  
-build:
+  build:
     runs-on: [ ubuntu-latest ]
     steps:
       - name: Checkout Source
@@ -35,7 +24,7 @@ build:
           polaris_assessment_types: "SAST"
           
           ### SCANNING: Optional fields
-          polaris_application_name: GitHub Integrations
+          polaris_application_name: "polaris-github-action-webgoat"
           polaris_project_name: ${{ github.event.repository.name }}
           
           ### PULL REQUEST COMMENTS: Uncomment below to enable
