@@ -17,9 +17,9 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v4
         with:
-        java-version: 17
-        distribution: microsoft
-        cache: maven
+          java-version: 17
+          distribution: microsoft
+          cache: maven
       - name: Polaris Scan
         uses: synopsys-sig/synopsys-action@v1.13.0
         with:
