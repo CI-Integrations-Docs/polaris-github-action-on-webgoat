@@ -10,7 +10,18 @@ on:
   workflow_dispatch:
   
 jobs:
-  build:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: curl
+      uses: enflo/curl-action@master
+      with:
+        curl:   curl --location --request GET "https://cdev.altair.synopsys.com/api/portfolio/portfolios" \
+        --header 'Accept: application/vnd.synopsys.pm.portfolio-1+json' \
+        --header 'Api-token: {secrets.POLARIS_ACCESS_TOKEN}'
+  
+build:
     runs-on: [ ubuntu-latest ]
     steps:
       - name: Checkout Source
@@ -21,7 +32,7 @@ jobs:
           ### SCANNING: Required fields
           polaris_server_url: ${{ vars.POLARIS_SERVER_URL }}
           polaris_access_token: ${{ secrets.POLARIS_ACCESS_TOKEN }}
-          polaris_assessment_types: "SCA,SAST"
+          polaris_assessment_types: "SAST"
           
           ### SCANNING: Optional fields
           polaris_application_name: GitHub Integrations
